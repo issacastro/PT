@@ -1,5 +1,6 @@
 #Para ejecutar python APY.py extension_audio user
 #Para ejecutar python APY.py wav Issac
+#Este API solo funciona para Corpus DiMex
 import csv
 import os
 import sys
@@ -31,7 +32,6 @@ def Gender(folders,ext,seg):
     for folder in folders:
         name = folder.split("/")[-1]
         audio = folder + "/individuales/" + name + "01"+ext
-        audio = folder  
         result = seg(audio)
         list_result.append(result[0][0])
     return list_result
@@ -41,7 +41,6 @@ def Range_old(folders,ext):
     for folder in folders:
         name = folder.split("/")[-1]
         audio = folder + "/comunes/" + name + "01"+ext
-        audio = folder 
         sound = AudioSegment.from_wav(audio)
         system("clear")
         play(sound)
@@ -84,7 +83,7 @@ def main():
     seg = Segmenter(detect_gender= True)
     ext = "."+str(sys.argv[1])
     user =  str(sys.argv[2])
-    Path = os.getcwd()+"/CorpusMe/*"
+    Path = os.getcwd()+"/CorpusM/*"
     folders = getFolders(Path)
     folders = sorted(folders)
     Edades = Range_old(folders, ext)

@@ -11,7 +11,7 @@ def ConvertWav_Completo(path):
     i=1
     for filename in os.listdir(path):
         if(filename.endswith('.mp3')):
-            os.system(f"""ffmpeg -i {path+filename} -ss 00 -to 05 -acodec pcm_s16le -ar 16000 {path+filename[:-4]}.wav""")
+            os.system(f"""ffmpeg -i {path+filename} -acodec pcm_s16le -ar 16000 {path+filename[:-4]}.wav""")
             i=i+1
             os.remove(path+filename)
 def ConvertWav(path,startA,endA,ext):
